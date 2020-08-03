@@ -11,10 +11,12 @@ for i in 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
    adduser t$i -p passwd$i -gt$i -m
    echo "t$i:passwd$i" | chpasswd
    mkdir /home/t$i/web
-   chown t$i:t$i /home/t$i/web
+   chmod -R 755 /home/t$i
+   chown -R t$i:t$i /home/t$i
 #  echo alias /t$i "/home/t$i/web" >> /etc/httpd/conf/httpd.conf
-#   echo "<html><title>Hello World!</title><head></head><body><h1>HELLO WORLD t$i</h1></body></html>" >>/home/t$i/web/index.htm
+#  echo "<html><title>Hello World!</title><head></head><body><h1>HELLO WORLD t$i</h1></body></html>" >>/home/t$i/web/index.htm
  done
 echo Settings completed.
 echo restart httpd Service....
 service httpd restart
+
